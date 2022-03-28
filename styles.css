@@ -1,0 +1,13 @@
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 0;
+}
+
+.calculator-shell {
+  width: 25rem;
+  height: 30rem;
+  border: 0.15rem solid gray;
+  border-radius: 0.5rem;
+}
