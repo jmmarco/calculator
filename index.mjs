@@ -15,15 +15,38 @@ function operate(operator, a, b) {
   }
 }
 
-function populateKeyPad(targetElement) {
+function populateDigits(targetElement) {
   if (!isElement(targetElement)) return;
 
-  new Array(10).fill("").forEach((digit, index) => {
-    const key = document.createElement("div");
-    key.textContent = index;
-    key.dataset.keyValue = index;
-    targetElement.appendChild(key);
+  const keypad = [
+    "AC",
+    "+/−",
+    "%",
+    "÷",
+    "7",
+    "8",
+    "9",
+    "×",
+    "4",
+    "5",
+    "6",
+    "−",
+    "1",
+    "2",
+    "3",
+    "+",
+    "0",
+    ",",
+    "=",
+  ];
+
+  keypad.forEach((key) => {
+    const keyEl = document.createElement("div");
+    keyEl.textContent = key;
+    keyEl.dataset.keyValue = key;
+    keyEl.classList.add("calculator-digit");
+    targetElement.appendChild(keyEl);
   });
 }
 
-populateKeyPad(document.querySelector(".calculator-keypad"));
+populateDigits(document.querySelector(".calculator-keypad"));
