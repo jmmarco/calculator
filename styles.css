@@ -1,3 +1,8 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
 .app-container {
   display: flex;
   justify-content: center;
@@ -6,8 +11,60 @@
 }
 
 .calculator-shell {
-  width: 25rem;
-  height: 30rem;
-  border: 0.15rem solid gray;
+  width: 30rem;
+  height: 49rem;
   border-radius: 0.5rem;
+  color: #fff;
+  background-color: #000;
+  padding-top: 4rem;
+}
+
+.calculator-display {
+  text-align: right;
+  margin-right: 2rem;
+  font-size: 6rem;
+}
+
+.calculator-keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5rem;
+}
+
+.calculator-digit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 2.5rem;
+  width: 6rem;
+  height: 6rem;
+  background-color: rgb(79, 74, 80);
+  margin: 0.1rem;
+  justify-self: center;
+}
+
+.calculator-digit:nth-child(-n + 3) {
+  background-color: rgb(52, 46, 50);
+}
+
+.calculator-digit:nth-child(4n) {
+  background-color: rgb(253, 141, 15);
+}
+
+.calculator-digit:last-child {
+  background-color: rgb(253, 141, 15);
+}
+
+.calculator-digit:nth-last-child(3) {
+  justify-content: flex-start;
+  padding: 0 1.75rem;
+}
+
+.calculator-digit:nth-child(17) {
+  grid-column: 1 / 3;
+  border-radius: unset;
+  border-radius: 3rem;
+  width: 85%;
+  height: unset;
 }
