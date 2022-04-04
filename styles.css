@@ -23,6 +23,7 @@ body {
   text-align: right;
   margin-right: 2rem;
   font-size: 6rem;
+  min-height: 9rem;
 }
 
 .calculator-keypad {
