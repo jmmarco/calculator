@@ -9,7 +9,7 @@ const STATE = {
 
 function operate(operator, a, b) {
   const verifiedOperator = mapToOperator(operator);
-
+  console.log("b => ", b === 0);
   switch (verifiedOperator) {
     case "+":
       return +a + +b;
@@ -18,7 +18,7 @@ function operate(operator, a, b) {
     case "*":
       return +a * +b;
     case "/":
-      return b === 0 ? null : a / b;
+      return Number(b) === 0 ? "Error" : a / b;
     default:
       return;
   }
@@ -127,14 +127,19 @@ function handleClick(e) {
       STATE.firstTerm.length > 0 &&
       STATE.secondTerm.length > 0: {
       console.log(`fired ${10} case`);
-      console.log("STATE", STATE);
-      console.log(operate(STATE.operator, STATE.firstTerm, STATE.secondTerm));
 
       const operation = operate(
         STATE.operator,
         STATE.firstTerm,
         STATE.secondTerm
       );
+
+      if (operation === "Error") {
+        clearState(STATE);
+        console.log(operation);
+        populateDisplay(operation);
+        return;
+      }
 
       STATE.accumulator = Number.isInteger(operation)
         ? operation.toString()
@@ -179,6 +184,24 @@ function handleClick(e) {
       STATE.secondTerm += key;
       populateDisplay(STATE.secondTerm);
       break;
+    case !isNumber(key) &&
+      STATE.firstTerm.length === 0 &&
+      STATE.secondTerm.length === 0:
+      console.log(`fired ${14} case`);
+      STATE.operator = key;
+
+      break;
+    case !isNumber(key) &&
+      STATE.firstTerm.length > 0 &&
+      STATE.secondTerm.length === 0: {
+      console.log(`fired ${15} case`);
+      const operation = operate(STATE.operator, STATE.firstTerm, 0);
+
+      STATE.accumulator = operation;
+
+      populateDisplay(STATE.accumulator);
+      clearState(STATE, "firstTerm");
+    }
     default:
       break;
   }
