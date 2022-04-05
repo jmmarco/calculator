@@ -1,15 +1,24 @@
-import { isElement } from "./utils.mjs";
+import { isElement, isNumber, clearState, mapToOperator } from "./utils.mjs";
+
+const STATE = {
+  firstTerm: "",
+  secondTerm: "",
+  operator: "",
+  accumulator: "",
+};
 
 function operate(operator, a, b) {
-  switch (operator) {
+  const verifiedOperator = mapToOperator(operator);
+
+  switch (verifiedOperator) {
     case "+":
-      return a + b;
+      return +a + +b;
     case "-":
-      return a - b;
+      return +a - +b;
     case "*":
-      return a * b;
+      return +a * +b;
     case "/":
-      return a / b;
+      return b === 0 ? null : a / b;
     default:
       return;
   }
