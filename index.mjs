@@ -169,7 +169,6 @@ function handleClick(e) {
 
       populateDisplay(STATE.accumulator);
       clearState(STATE, "firstTerm");
-      console.log('12 =>', STATE)
       break;
     }
     case isNumber(key) &&
