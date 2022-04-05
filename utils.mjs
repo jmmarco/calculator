@@ -7,6 +7,7 @@ export function isNumber(n) {
 }
 
 export function clearState(obj, key) {
+  if (!obj) throw Error('You need to pass a valid object!')
   if (!key) {
     for (let k in obj) {
       obj[k] = "";
